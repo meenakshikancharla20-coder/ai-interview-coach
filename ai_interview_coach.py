@@ -18,7 +18,7 @@ def get_feedback(answer, keywords):
     feedback = []
     score = 0
 
-    # Length check (up to 4 points)
+    
     if word_count < 15:
         feedback.append("Your answer is quite short. Try to elaborate more with specific examples.")
         score += 1
@@ -29,7 +29,7 @@ def get_feedback(answer, keywords):
         feedback.append("Good length for your answer.")
         score += 4
 
-    # Keyword relevance check (up to 4 points)
+
     answer_lower = answer.lower()
     matched = [kw for kw in keywords if kw in answer_lower]
 
@@ -39,7 +39,7 @@ def get_feedback(answer, keywords):
     else:
         feedback.append("Try to include more specific, relevant details related to the question.")
 
-    # Confidence/filler word check (up to 2 points)
+    
     filler_words = ["um", "like", "you know", "maybe", "i guess", "sort of"]
     fillers_found = [f for f in filler_words if f in answer_lower]
     if fillers_found:
@@ -90,7 +90,7 @@ def mock_interview():
 
     save_history({"average_score": average_score, "questions": session_results})
 
-    # Show improvement over time
+    
     history = load_history()
     if len(history) > 1:
         past_avg = [session["average_score"] for session in history[:-1]]
